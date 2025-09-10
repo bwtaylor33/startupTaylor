@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Are you competitive? Or are you looking for a simple, fun game to kill time? With Space Defender you get both! Come try this reimagining of the classic space invaders game. It includes an assorted array of unique upgrades as the enemies become more difficult to manage. The controls are simple, but the gameplay is addictive! On top of that, our servers will track your high scores you can compete with other users from around the world! Do you think you can reach #1 on the leaderboard?
+Are you competitive? Or are you just looking for a simple, fun game to kill time? With Space Defender you get both! Come try this reimagining of the classic space invaders game. It includes an assorted array of unique upgrades as the enemies become more difficult to manage. The controls are simple, but the gameplay is addictive! On top of that, our servers will track your high scores you can compete with other users from around the world! Do you think you can reach #1 on the leaderboard?
 
 ### Design
 

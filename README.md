@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. A simple game very similar to space invaders. You control a turret at the bottom of the screen that you move left and right with the arrow keys. You fire with the spacebar. Enemies will spawn from the top of the screen that you will need to eliminate before they reach the bottom, but they will fire back as well which will stun your turret. The game will progressively get more difficult, but over time upgrades to your turret and base will spawn to help you survive for longer. Your current score and highest score will be tracked based on the user and login provided. You will be able to see the leaderboard to see how your high score compares to others that have played the game.
+A simple game very similar to space invaders. You control a turret at the bottom of the screen that you move left and right with the arrow keys. You fire with the spacebar. Enemies will spawn from the top of the screen that you will need to eliminate before they reach the bottom, but they will fire back as well which will stun your turret. The game will progressively get more difficult, but over time upgrades to your turret and base will spawn to help you survive for longer. Your current score and highest score will be tracked based on the user and login provided. You will be able to see the leaderboard to see how your high score compares to others that have played the game.
 
 
 > [!NOTE]

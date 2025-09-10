@@ -30,7 +30,7 @@ Are you competitive? Or are you just looking for a simple, fun game to kill time
 
 ### Design
 
-![Design image](designstartup.png)
+![Design image](startupbook.HEIC)
 
 Here is a sequence diagram explaining how the highscores and leaderboards are stored:
 

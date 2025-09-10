@@ -1,8 +1,8 @@
-# Space Fighter
+# Space Defender
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A brief description of the application here. A simple game very similar to space invaders. You control a turret at the bottom of the screen that you move left and right with the arrow keys. You fire with the spacebar. Enemies will spawn from the top of the screen that you will need to eliminate before they reach the bottom, but they will fire back as well which will stun your turret. The game will progressively get more difficult, but over time upgrades to your turret and base will spawn to help you survive for longer. Your current score and highest score will be tracked based on the user and login provided. You will be able to see the leaderboard to see how your high score compares to others that have played the game.
 
 
 > [!NOTE]

@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-Book reviewing website. Will require login so that it can track favorite books, save personal book ratings, and recommend new books based on what your friends enjoy. Users will be able browse a list of books and add their personal reviews of them. 
+Book reviewing website. Will require login so that it can track favorite books, save personal book ratings, and recommend new books based on what you and your friends enjoy. Users will be able browse a list of books and add their personal reviews of them. 
 
 
 > [!NOTE]

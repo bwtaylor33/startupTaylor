@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Are you competitive? Or are you looking for a simple, fun game to kill time? With Space Defender you get both! Come try this reimagining of the classic space invaders game. It includes an assorted array of unique upgrades as the enemies become more difficult to manage. The controls are simple, but the gameplay is addictive! On top of that, our servers will track your high scores you can compete with other users from around the world! Do you think you can reach #1 on the leaderboard?
 
 ### Design
 
@@ -43,8 +43,8 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
+- Secure login to save high scores
+- Leaderboard to compare high scores with other users
 - Describe your key feature
 
 ### Technologies

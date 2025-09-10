@@ -1,8 +1,8 @@
-# Space Defender
+# NovelTy
 
 [My Notes](notes.md)
 
-A simple game very similar to space invaders. You control a turret at the bottom of the screen that you move left and right with the arrow keys. You fire with the spacebar. Enemies will spawn from the top of the screen that you will need to eliminate before they reach the bottom, but they will fire back as well which will stun your turret. The game will progressively get more difficult, but over time upgrades to your turret and base will spawn to help you survive for longer. Your current score and highest score will be tracked based on the user and login provided. You will be able to see the leaderboard to see how your high score compares to others that have played the game.
+Book reviewing website. Will require login so that it can track favorite books, save personal book ratings, and recommend new books based on what your friends enjoy. Users will be able browse a list of books and add their personal reviews of them. 
 
 
 > [!NOTE]
@@ -43,16 +43,17 @@ sequenceDiagram
 
 ### Key features
 
-- Secure login to save high scores
-- Leaderboard to compare high scores with other users
-- Describe your key feature
+- User login for security
+- Database of books with their page number, genre, and overall review
+- Allows you to rate books and track which books you have read
+- Recommends new books based on friends and your collection of favorite books
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
+- **HTML** - Used for structure. Will need separate pages. Will have a Resgistry Page, Home Page, Add Book Page, and a Browsing Page
+- **CSS** - Used for decorating each page
 - **React** - Description here
 - **Service** - Description here
 - **DB/Login** - Description here

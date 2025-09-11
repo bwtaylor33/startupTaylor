@@ -32,7 +32,7 @@ Are you tired of searching endlessly for a good book to read? Why not just use N
 
 ![Design image](startupbook.jpeg)
 
-Here is a sequence diagram explaining how the highscores and leaderboards are stored:
+Here is a sequence diagram showing the user logging into the home page, thus seeing his bookshelf and top recommendations:
 
 ![Design image](sequence.jpeg)
 

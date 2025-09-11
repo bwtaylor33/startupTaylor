@@ -26,7 +26,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Are you competitive? Or are you just looking for a simple, fun game to kill time? With Space Defender you get both! Come try this reimagining of the classic space invaders game. It includes an assorted array of unique upgrades as the enemies become more difficult to manage. The controls are simple, but the gameplay is addictive! On top of that, our servers will track your high scores you can compete with other users from around the world! Do you think you can reach #1 on the leaderboard?
+Are you tired of searching endlessly for a good book to read? Why not just use NovelTy? We will track the books you and your like so you will spend less time searching for a book, and more time reading a new favorite! And if you want to try something new, we have a full database of books to browse. NovelTy's purpose is to get you reading more of what you like!
 
 ### Design
 
@@ -52,12 +52,12 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Used for structure. Will need separate pages. Will have a Resgistry Page, Home Page, Add Book Page, and a Browsing Page
-- **CSS** - Used for decorating each page
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Used for structure. Will need separate pages. Will have a Registry Page, Home Page, Add Book Page, and a Browsing Page
+- **CSS** - Used for decorating each page. Used to make a responsive layout for all viewports. Create grid for book selection.
+- **React** - show homepage, buttons to add a book, browse library
+- **Service** - Backend service with endpoints for: Registering logins, creating user profiles, validating logins, create new reviews, fetch bookshelf, get recommendations for users
+- **DB/Login** - Stores users, books, reviews. Register and login users. Need to have authenticated login to leave a review.
+- **WebSocket** - As new book is added to the shelf from a different login, it will be added automatically to the other user's shelf without refreshing.
 
 ## 🚀 AWS deliverable
 

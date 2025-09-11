@@ -34,12 +34,7 @@ Are you tired of searching endlessly for a good book to read? Why not just use N
 
 Here is a sequence diagram explaining how the highscores and leaderboards are stored:
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+![Design image](sequence.jpeg)
 
 ### Key features
 

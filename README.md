@@ -55,13 +55,13 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [X] **Server deployed and accessible with custom domain name** - [My server link](https://brycetaylor.link).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X] **HTML pages** - I did not complete this part of the deliverable.
+- [X] **HTML pages** - I have 5 separate pages that are used in the website. Home (index), AddBook, Register, Login, and Browse
 - [X] **Proper HTML element usage** - I did not complete this part of the deliverable.
 - [X] **Links** - I did not complete this part of the deliverable.
 - [X] **Text** - I did not complete this part of the deliverable.

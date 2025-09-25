@@ -62,11 +62,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] **HTML pages** - I have 5 separate pages that are used in the website. Home (index), AddBook, Register, Login, and Browse
-- [X] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [X] **Links** - I did not complete this part of the deliverable.
-- [X] **Text** - I did not complete this part of the deliverable.
+- [X] **Proper HTML element usage** - I used the many input elements in the addBook.html, including the range, number, and text inputs. browse.html contains tables that have images inseerted as well. Link elements are placed in both the header and footer of each page.
+- [X] **Links** - The header on top of each page allows you to navigate. Register takes you to login, and login will take you to the home page.
+- [X] **Text** - I have multiple pieces of text throughout the website.
 - [X] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [X] **Images** - I did not complete this part of the deliverable.
+- [X] **Images** - The book covers in both the browse.html and index.html all use images.
 - [X] **Login placeholder** - My login.html is the placeholder for this. It has user input that after entering sends you to the home page.
 - [X] **DB data placeholder** - The 4 books are a placeholder for the database that will hold all of that information :)
 - [X] **WebSocket placeholder** - The "loading books..." is a placeholder for when other users at new books to the database

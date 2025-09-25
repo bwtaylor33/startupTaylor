@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon HTML</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>NovelTy<sup>&reg;</sup></h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse.html">Browse</a></li>
+          <li><a href="addbook.html">Add a Book Review</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <h1>Add a Book</h1>
+      <form method="get" action="index.html">
+        <div>
+          <span>Insert Book Name: </span>
+          <input type="text" placeholder="Book Name Here" />
+        </div>
+        <div>
+          <span>Author Name: </span>
+          <input type="text" placeholder="Author Name Here" />
+        </div>
+        <div>
+            <span>Page Count: </span>
+            <input type="number" id="page" placeholder="Enter Page Count" />
+        </div>
+        <div>
+            <p>1 = I do NOT like this book.</p>
+            <p>2 = I would not recommend this book.</p>
+            <p>3 = This book was about average.</p>
+            <p>4 = I liked this book!</p>
+            <p>5 = I LOVED this book!</p>
+            <span>Review out of 5: </span>
+            <input type="range" id="review" min="0" max="5" placeholder="Enter Review Here" />
+        </div>
+        <button type="submit">Submit</button>
+        <button type="submit">Cancel</button>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Bryce Taylor</span>
+      <br />
+      <a href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
+    </footer>
+  </body>
+</html>

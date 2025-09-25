@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simon HTML</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>NovelTy<sup>&reg;</sup></h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse.html">Browse</a></li>
+          <li><a href="addbook.html">Add a Book Review</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <h1>Register</h1>
+      <form method="get" action="login.html">
+        <div>
+          <span>First Name: </span>
+          <input type="text" placeholder="insert first name" />
+        </div>
+        <div>
+            <span>Last Name: </span>
+            <input type="text" placeholder="insert last name" />
+        </div>
+        <div>
+          <span>Email Address: </span>
+          <input type="text" placeholder="your@email.com" />
+        </div>
+        <div>
+          <span>Create Password: </span>
+          <input type="password" placeholder="password" />
+        </div>
+        <div>
+            <span>Confirm Password: </span>
+            <input type="password" placeholder="password" />
+          </div>
+        <button type="submit">Register</button>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Bryce Taylor</span>
+      <br />
+      <a href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
+    </footer>
+  </body>
+</html>

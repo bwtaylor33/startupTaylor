@@ -67,9 +67,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [X] **Text** - I did not complete this part of the deliverable.
 - [X] **3rd party API placeholder** - I did not complete this part of the deliverable.
 - [X] **Images** - I did not complete this part of the deliverable.
-- [X] **Login placeholder** - I did not complete this part of the deliverable.
-- [X] **DB data placeholder** - I did not complete this part of the deliverable.
-- [X] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [X] **Login placeholder** - My login.html is the placeholder for this. It has user input that after entering sends you to the home page.
+- [X] **DB data placeholder** - The 4 books are a placeholder for the database that will hold all of that information :)
+- [X] **WebSocket placeholder** - The "loading books..." is a placeholder for when other users at new books to the database
 
 ## 🚀 CSS deliverable
 

@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    font-family: "Cormorant Garamond", serif;
+}
+
+table {
+    font-family: "Cormorant Garamond", serif;
+    width: 90%;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid;
+}
+
+th {
+    padding: 10px;
+    background-color: lightgray;
+    color: black;
+    text-align: left;
+}
+
+main {
+    background-color: rgb(255, 254, 246);
+}
+
+header {
+    flex: 0 80px;
+    font-family: "Cormorant Garamond", serif;
+    background-color: rgb(20, 80, 43);
+}
+
+footer {
+    flex: 0 30px;
+    background-color:rgb(20, 80, 43)
+}

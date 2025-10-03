@@ -20,9 +20,9 @@
     <link rel="stylesheet" href="browse.css" />
 
     <!-- Use header, main, and footer elements to give semantic structure -->
-    <header>
+    <header class="container fluid">
       <!-- Navigation elements -->
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar fixed-top bg-white">
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu class="navbar-nav">
           <a href="index.html"> <img src="logoName.png" height= 75px/> </a>
@@ -38,7 +38,9 @@
       <hr />
     </header>
 
-    <main>
+    <main class="container-fluid bg-light text-center">
+      <br />
+      <br />
       <h1>Browse Books</h1>
       <p>Tab 1</p>
       <table>
@@ -83,11 +85,11 @@
       </table>
     </main>
 
-    <footer>
-      <hr />
-      <span class="text-reset">Bryce Taylor</span>
-      <br />
-      <a href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
+    <footer class="bg-dark text-white-50">
+      <div class="container-fluid">
+        <span class="text-reset">Bryce Taylor: </span>
+        <a class="text-reset" href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
+      </div>
     </footer>
   </body>
 </html>

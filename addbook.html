@@ -23,15 +23,22 @@
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header class="container fluid">
       <!-- Navigation elements -->
-      <nav class="navbar fixed-top bg-white">
+      <nav class="navbar navbar-expand-lg fixed-top bg-white">
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu class="navbar-nav">
-          <a href="index.html"> <img src="logoName.png" height= 75px/> </a>
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="browse.html">Browse</a></li>
-          <li class="nav-item"><a class="nav-link" href="addbook.html">Add Review</a></li>
-          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <a href="index.html"> <img src="logoName.png" height= 70px/> </a>
+          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="browse.html">Browse</a></li>
+              <li class="nav-item"><a class="nav-link" href="addbook.html">Add Review</a></li>
+              <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+              <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+            </ul>
+          </div>
         </menu>
       </nav>
 
@@ -39,7 +46,7 @@
       <hr />
     </header>
 
-    <main class="container-fluid bg-light">
+    <main class="container-fluid bg-light vh-100">
       <h1>Add a Book</h1>
       <form method="get" action="index.html">
         <div class="form-group">
@@ -74,5 +81,6 @@
         <a class="text-reset" href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
       </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -39,22 +39,20 @@
       <hr />
     </header>
 
-    <main class="container-fluid bg-light text-center">
-      <br />
-      <br />
+    <main class="container-fluid bg-light">
       <h1>Add a Book</h1>
       <form method="get" action="index.html">
-        <div>
-          <span>Insert Book Name: </span>
-          <input type="text" placeholder="Book Name Here" />
+        <div class="form-group">
+          <label>Insert Book Name: </label>
+          <input class="form-control" type="text" placeholder="Book Name Here" />
         </div>
-        <div>
-          <span>Author Name: </span>
-          <input type="text" placeholder="Author Name Here" />
+        <div class="form-group">
+          <label>Author Name: </label>
+          <input class="form-control" type="text" placeholder="Author Name Here" />
         </div>
-        <div>
-            <span>Page Count: </span>
-            <input type="number" id="page" placeholder="Enter Page Count" />
+        <div class="form-group">
+            <label>Page Count: </label>
+            <input class="form-control" type="number" id="page" placeholder="Enter Page Count" />
         </div>
         <div>
             <p>1 = I do NOT like this book.</p>
@@ -62,15 +60,15 @@
             <p>3 = This book was about average.</p>
             <p>4 = I liked this book!</p>
             <p>5 = I LOVED this book!</p>
-            <span>Review out of 5: </span>
-            <input type="range" id="review" min="0" max="5" placeholder="Enter Review Here" />
+            <label for="review" class="form-label">Review out of 5: </label>
+            <input type="range" class="form-range rating" id="review" min="0" max="5" placeholder="Enter Review Here" />
         </div>
-        <button type="submit">Submit</button>
-        <button type="submit">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-secondary" type="submit">Cancel</button>
       </form>
     </main>
 
-    <footer class="bg-dark text-white-50">
+    <footer class="footer bg-dark text-white-50 fixed-bottom">
       <div class="container-fluid">
         <span class="text-reset">Bryce Taylor: </span>
         <a class="text-reset" href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>

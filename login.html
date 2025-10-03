@@ -38,25 +38,23 @@
       <hr />
     </header>
 
-    <main class="container-fluid bg-light text-center">
-      <br />
-      <br />
+    <main class="container-fluid bg-light">
       <h1>Login</h1>
       <form method="get" action="index.html">
-        <div>
-          <span>@</span>
-          <input type="text" placeholder="your@email.com" />
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" type="text" placeholder="your@email.com" />
         </div>
-        <div>
-          <span>🔒</span>
-          <input type="password" placeholder="password" />
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-control" type="password" placeholder="password" />
         </div>
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
+        <button class="btn btn-primary" type="submit">Login</button>
+        <button class="btn btn-secondary" type="submit">Create</button>
       </form>
     </main>
 
-    <footer class="bg-dark text-white-50">
+    <footer class="footer bg-dark text-white-50 fixed-bottom">
       <div class="container-fluid">
         <span class="text-reset">Bryce Taylor: </span>
         <a class="text-reset" href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>

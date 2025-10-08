@@ -1,5 +1,5 @@
 import React from 'react';
-// import './browse.css'
+import './browse.css'
 
 export function Browse() {
   return (
@@ -46,7 +46,7 @@ export function Browse() {
             </tr>
         </tbody>
       </table>
-      <p className="bg-light">Loading recently added books...</p>
+      <p className="loadingmessage bg-light">Loading recently added books...</p>
     </main>
   );
 }

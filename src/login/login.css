@@ -8,3 +8,7 @@
     margin: 16px;
     text-align: center;
 }
+
+.form-container {
+    min-height: 100vh;
+}

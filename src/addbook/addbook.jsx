@@ -5,7 +5,7 @@ export function AddBook() {
   return (
     <main className="container-fluid bg-light vh-100">
       <h1>Add a Book</h1>
-      <form method="get" action="index.html">
+      <form>
         <div className="addbook form-group">
           <label>Insert Book Name: </label>
           <input className="form-control" type="text" placeholder="book name here" />
@@ -30,8 +30,8 @@ export function AddBook() {
             <input type="range" className="form-range" id="review" min="0" max="5"/>
         </div>
         <div className="ratingbutton">
-            <button className="btn btn-primary" type="submit">Submit</button>
-            <button className="btn btn-secondary" type="submit">Cancel</button>
+            <button className="btn btn-primary" type="button">Submit</button>
+            <button className="btn btn-secondary" type="button">Cancel</button>
         </div>
       </form>
     </main>

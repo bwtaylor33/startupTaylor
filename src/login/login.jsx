@@ -5,7 +5,7 @@ export function Login() {
   return (
     <main className="bg-light">
       <h1>Login</h1>
-      <form method="get">
+      <form className="form-container">
         <div className="login form-group">
           <label>Email</label>
           <input className="form-control" type="text" placeholder="your@email.com" />

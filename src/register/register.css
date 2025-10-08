@@ -1,4 +1,10 @@
-div {
+.register {
     padding-bottom: 16px;
     width: 300px;
+    align-content: center;
+}
+
+.registerbutton {
+    padding-right: 16px;
+    text-align: center;
 }

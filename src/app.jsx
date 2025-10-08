@@ -20,8 +20,13 @@ export default function App() {
                         </div>
                         <menu className="navbar-nav">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to='/'>
+                                <NavLink className="nav-link" to='home'>
                                 Home
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='login'>
+                                Login
                                 </NavLink>
                             </li>
                             <li className="nav-item">
@@ -46,6 +51,7 @@ export default function App() {
                 <Routes>
                     <Route path='/' element={<Login />} exact />
                     <Route path='/home' element={<Home />} exact />
+                    <Route path='/login' element={<Login />} exact />
                     <Route path='/register' element={<Register />} />
                     <Route path='/browse' element={<Browse />} />
                     <Route path='/addbook' element={<AddBook />} />

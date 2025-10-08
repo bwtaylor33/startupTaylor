@@ -8,15 +8,15 @@ export function AddBook() {
       <form method="get" action="index.html">
         <div className="addbook form-group">
           <label>Insert Book Name: </label>
-          <input className="form-control" type="text" placeholder="Book Name Here" />
+          <input className="form-control" type="text" placeholder="book name here" />
         </div>
         <div className="addbook form-group">
           <label>Author Name: </label>
-          <input className="form-control" type="text" placeholder="Author Name Here" />
+          <input className="form-control" type="text" placeholder="author name here" />
         </div>
         <div className="addbook form-group">
             <label>Page Count: </label>
-            <input className="form-control" type="number" id="page" placeholder="Enter Page Count" />
+            <input className="form-control" type="number" id="page" placeholder="enter page count" />
         </div>
         <div className="ratingdesc">
             <p>1 = I do NOT like this book.</p>
@@ -27,7 +27,7 @@ export function AddBook() {
         </div>
         <div className="rating">
             <label for="review" className="form-label">Review out of 5: </label>
-            <input type="range" className="form-range" id="review" min="0" max="5" placeholder="Enter Review Here" />
+            <input type="range" className="form-range" id="review" min="0" max="5"/>
         </div>
         <div className="ratingbutton">
             <button className="btn btn-primary" type="submit">Submit</button>

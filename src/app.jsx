@@ -12,7 +12,7 @@ import { AddBook } from './addbook/addbook';
 export default function App() {
     return (
         <BrowserRouter>
-            <div className="body bg-dark text-light">
+            <div className="body bg-dark text-dark">
                 <header className="container-fluid">
                     <nav className="navbar navbar-dark">
                         <div className="navbar-brand">

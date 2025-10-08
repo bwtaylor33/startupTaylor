@@ -1,8 +1,13 @@
-.rating {
-    width: 50%;
-}
-
-div {
+.addbook {
     padding-bottom: 16px;
     width: 300px;
+}
+
+.ratingdesc {
+    font-size: 0.8em;
+}
+
+.ratingbutton {
+    text-align: center;
+    margin-right: 10px;
 }

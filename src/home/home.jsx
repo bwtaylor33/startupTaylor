@@ -1,11 +1,11 @@
 import React from 'react';
-// import './home.css'
+import './home.css'
 
 export function Home() {
   return (
     <main className="container-fluid bg-light text-center vh-100 pb-5">
-      <h1>Welcome, Bryce!</h1>
-      <h2>Books You've Read: </h2>
+      <h1 className="home" >Welcome, Bryce!</h1>
+      <h2 className="home" >Books You've Read: </h2>
       <table className="table table-hover">
         <thead className="bg-secondary">
           <tr>
@@ -33,8 +33,8 @@ export function Home() {
             </tr>
         </tbody>
       </table>
-      <h2>What We Recommend:</h2>
-      <p>
+      <h2 className="home">What We Recommend:</h2>
+      <p className="home">
         Based on you past book reviews and other readers like you, we recommend to you these great books! We hope you enjoy them!
       </p>
       <table className="table table-hover bg-light">

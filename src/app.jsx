@@ -14,55 +14,49 @@ export default function App() {
         <BrowserRouter>
             <div className="body bg-dark text-light">
                 <header className="container-fluid">
-                <nav className="navbar fixed-top navbar-dark">
-                    <div className="navbar-brand">
-                        <a href="index.html"> <img src="logoName.png" height= "70px"/> </a>
-                    </div>
-                    <menu className="navbar-nav">
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to='/'>
-                        Home
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to='register'>
-                        Register
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to='browse'>
-                        Browse
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to='addbook'>
-                        Add Book
-                        </NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className="nav-link" to='/'>
-                        Login
-                        </NavLink>
-                    </li>
-                    </menu>
-                </nav>
+                    <nav className="navbar navbar-dark">
+                        <div className="navbar-brand">
+                            <NavLink to="home"> <img src="logoName.png" height= "70px"/> </NavLink>
+                        </div>
+                        <menu className="navbar-nav">
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='/'>
+                                Home
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='register'>
+                                Register
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='browse'>
+                                Browse
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='addbook'>
+                                Add Book
+                                </NavLink>
+                            </li>
+                        </menu>
+                    </nav>
                 </header>
         
                 <Routes>
                     <Route path='/' element={<Login />} exact />
+                    <Route path='/home' element={<Home />} exact />
                     <Route path='/register' element={<Register />} />
-                    <Route path='/scores' element={<Scores />} />
-                    <Route path='/about' element={<About />} />
+                    <Route path='/browse' element={<Browse />} />
+                    <Route path='/addbook' element={<AddBook />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
-                <footer className="bg-dark text-white-50">
-                <div className="container-fluid">
-                    <span className="text-reset">Author Name(s)</span>
-                    <a className="text-reset" href="https://github.com/webprogramming260/simon-react">
-                    Source
-                    </a>
-                </div>
+                <footer className="footer bg-dark text-white-50 fixed-bottom">
+                    <div className="container-fluid">
+                        <span className="text-reset">Bryce Taylor: </span>
+                        <a className="text-reset" href="https://github.com/bwtaylor33/startupTaylor">GitHub</a>
+                    </div>
                 </footer>
             </div>
         </BrowserRouter>

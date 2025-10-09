@@ -86,9 +86,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [X] **Bundled using Vite** - done
+- [X] **Components** - Addbook, Login, Register, Home, and Browse components were all created from previous html files
+- [X] **Router** - Top navigation was updated to use the react router. Buttons have not yet been converted
 
 ## 🚀 React part 2: Reactivity deliverable
 

@@ -16,6 +16,7 @@ export function Login() {
         </div>
         <div className="loginbutton">
             <button className="btn btn-primary" type="button">Login</button>
+            <div className="divider"></div>
             <button className="btn btn-secondary" type="button">Create</button>
         </div>
       </form>

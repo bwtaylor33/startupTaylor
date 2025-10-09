@@ -42,6 +42,15 @@ footer a {
   float: right;
 }
 
+.divider {
+  width: 10px;
+  display: inline-block;
+}
+
+.form-container {
+  min-height: 100vh;
+}
+
 @media (max-height: 600px) {
   header {
     display: none;

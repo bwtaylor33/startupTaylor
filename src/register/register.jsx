@@ -5,7 +5,7 @@ export function Register() {
   return (
     <main className="bg-light">
       <h1>Register</h1>
-      <form method="get" action="login.html">
+      <form className="form-container">
         <div className="register form-group">
             <label>First Name: </label>
             <input className="form-control" type="text" placeholder="insert first name" />

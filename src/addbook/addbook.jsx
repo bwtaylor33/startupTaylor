@@ -5,7 +5,7 @@ export function AddBook() {
   return (
     <main className="container-fluid bg-light vh-100">
       <h1>Add a Book</h1>
-      <form>
+      <form className="form-container">
         <div className="addbook form-group">
           <label>Insert Book Name: </label>
           <input className="form-control" type="text" placeholder="book name here" />
@@ -31,6 +31,7 @@ export function AddBook() {
         </div>
         <div className="ratingbutton">
             <button className="btn btn-primary" type="button">Submit</button>
+            <div className="divider"></div>
             <button className="btn btn-secondary" type="button">Cancel</button>
         </div>
       </form>

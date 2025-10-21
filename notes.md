@@ -306,7 +306,7 @@ Paragraph: &lt;p>, Ordered list: &lt;ol&gt;, Unordered list: &lt;ul&gt;, h2: &lt
 
 How do you declare the document type to be html?
 
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 
 
 

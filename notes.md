@@ -252,6 +252,175 @@ If using a framework, the image may need to be in a 'public' or 'static' folder 
 
 In the CSS box model, what is the ordering of the box layers starting at the inside and working
 out?
+
 Order: Content -> Padding -> Border -> Margin
 Diagram:
 +----------------+
+| Margin |
+| +------------+ |
+| | Border | |
+| | +--------+ | |
+| | |Padding | | |
+| | |Content | | |
+| | +--------+ | |
+| +------------+ |
++----------------+
+Padding increases size inside border; margin creates space between elements.
+
+
+
+
+Given the following HTML, what CSS would you use to set the text "trouble" to green and leave the "double" text unaffected?
+
+Given <p><span class="trouble">trouble</span> double</p>, use .trouble { color: green; }
+
+
+What will the following code output when executed using a for loop and console.log?
+
+for (let i = 0; i < 3; i++) { console.log(i); }
+This initializes i=0, checks i<3 each loop, runs body and increments i++ after each iteration. Output
+
+
+
+
+How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
+
+Option 1 (direct):
+document.getElementById('byu').style.color = 'green';
+Option 2 (variable):
+const byu = document.getElementById('byu');
+byu.style.color = 'green';
+
+Explanation: getElementById returns the DOM element. Assigning to variable avoids querying repeatedly.
+
+
+
+
+What is the opening HTML tag for a paragraph, ordered list, unordered list, second level
+heading, first level heading, third level heading?
+
+Paragraph: <p>, Ordered list: <ol>, Unordered list: <ul>, h2: <h2>, h1: <h1>, h3: <h3>
+
+
+
+
+How do you declare the document type to be html?
+
+<!DOCTYPE html>
+
+
+
+
+What is valid javascript syntax for if, else, for, while, switch statements?
+
+if (x > 5) { ... } else { ... } for (...) { ... } while (...) { ... } switch (x) { case 1: ...; break; default: ... }
+
+
+
+
+What is the correct syntax for creating a javascript object?
+
+const person = { name: "John", age: 30 };
+
+
+
+
+Is it possible to add new properties to javascript objects?
+Yes. Example: person.city = "Provo";
+
+
+
+
+If you want to include JavaScript on an HTML page, which tag do you use?
+
+<script src="script.js"></script>
+
+
+
+
+Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
+
+HTML:
+<p id="animal">animal</p>
+<p id="fish">fish</p>
+Option 1 (direct):
+document.getElementById('animal').textContent = 'crow';
+Option 2 (variable):
+const animal = document.getElementById('animal');
+animal.textContent = 'crow';
+
+Both work; second is clearer if reusing element.
+
+
+
+
+Which of the following correctly describes JSON?
+
+JSON (JavaScript Object Notation) is a text-based format for structured data using key-value pairs. Example: {"name": "John", "age": 25 }
+
+
+
+
+What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps,
+wget, sudo do?
+
+chmod - change permissions, pwd - print working directory, cd - change directory, ls - list files, vim/nano - text
+editors, mkdir - make directory, mv - move/rename, rm - remove, man - manual, ssh - remote shell, ps - processes, wget - download files, sudo - run as admin
+
+
+
+
+Which of the following console command creates a remote shell session?
+
+ssh
+
+
+
+
+Which of the following is true when the -la parameter is specified for the ls console command?
+
+ls -la lists all files (including hidden) in long format
+
+
+
+
+Which of the following is true for the domain name banana.fruit.bozo.click, which is the top level domain, which is a subdomain, which is a root domain?
+
+TLD: .click, root domain: bozo.click, subdomain: fruit.bozo.click (and banana.fruit.bozo.click is a nested subdomain)
+
+
+
+
+Is a web certificate is necessary to use HTTPS.
+
+Yes, HTTPS requires a valid SSL/TLS certificate.
+
+
+
+
+Can a DNS A record can point to an IP address or another A record.
+
+A DNS A record points to an IP address; it should not point to another A record.
+
+
+
+
+Port 443, 80, 22 is reserved for which protocol?
+
+443 -> HTTPS, 80 -> HTTP, 22 -> SSH
+
+
+
+
+What will the following code using Promises output when executed?
+
+Many possibilities depending on promise behavior. Examples:
+1) Promise.resolve('Done').then(console.log) -> 'Done'
+2) Promise.reject('Error').catch(console.error) -> 'Error'
+3) new Promise(res => setTimeout(() => res('Hi'),1000)).then(console.log) -> 'Hi' after 1s
+4) Async function returns value -> printed when awaited or .then
+5) Promise chain: Promise.resolve(2).then(x=>x*2).then(x=>x+1).then(console.log) -> 5
+6) Reject handled -> shows error via catch.
+
+
+

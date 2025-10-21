@@ -341,8 +341,8 @@ If you want to include JavaScript on an HTML page, which tag do you use?
 Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
 
 HTML:
-<p id="animal">animal</p>
-<p id="fish">fish</p>
+&lt;p id="animal">animal&lt;/p&gt;
+&lt;p id="fish">fish&lt;/p&gt;
 Option 1 (direct):
 document.getElementById('animal').textContent = 'crow';
 Option 2 (variable):

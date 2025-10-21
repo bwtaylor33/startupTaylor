@@ -97,3 +97,128 @@ Handling the toggling of the checkboxes was particularly interesting.
   ))}
 </div>
 ```
+
+## CS Midterm Study Notes
+
+!!!!!!!!!!! TERMINAL NOTES !!!!!!!!!!!!!
+
+Navigating to the correct folder will take a combination of cd /paths and ls to figure out where to go. If you're lost, in most file browsers you can also open the terminal starting from there
+
+The command for creating a folder (directory) is mkdir, which is short for "make directory"
+
+The command to open vim is either vim or vi + the name of the file that you want to open. Both commands should work. The command to open nano is simply nano + the name of the file that you want to open.
+
+The mv command can also rename a file: mv test.txt practice.sh.
+
+chmod is how you update permissions. You may also need to use sudo to run as an admin. You can double check that this worked with ls -l.
+
+To run a file, add ./ to the beginning of the file name, so ./practice.sh.
+
+You can use cd .. to move down a directory. To remove a directory, we need to add the recursive flag to the remove command: rm -r practice.
+
+The command is ssh -i path/to/your/key.pem ubuntu@domainname.click.
+
+To look for hidden files, you'll want to use the -a flag with ls.
+
+The -l flag of ls shows a lot more information about each file, including last modified date, file / directory size, and the permissions
+
+To exit, you can either type exit or close the terminal.
+
+
+
+!!!!!!!!!! STUDY GUIDE V2 NOTES !!!!!!!!!!!!!
+
+In the following code, what does the link element do?
+It links an external resource (usually a CSS file) to the HTML document. Example: <link rel="stylesheet"
+href="styles.css"> applies styles from styles.css to the page.
+
+
+In the following code, what does a div tag do?
+A &lt;div&gt; is a block-level container that groups other elements. It's used for structure and layout.
+Examples (use in layouts):
+&lt;div class="header"&gt; ... &lt;/div&gt;
+&lt;div class="content"&gt; ... &lt;/div&gt;
+Divs have default display:block and take full width. They don't add behavior by themselves.
+
+
+In the following code, what is the difference between the #title and .grid selector?
+#title selects an element by ID (unique). .grid selects elements by class (can apply to multiple elements).
+
+
+In the following code, what is the difference between padding and margin?
+Padding: space inside the element (between content and border). Margin: space outside the element (between
+border and other elements).
+
+
+Given this HTML and this CSS how will the images be displayed using flex?
+If the container uses display: flex;, the images will be displayed in a row by default, side by side, unless
+flex-direction: column; is specified.
+
+
+What does the following padding CSS do?
+Example: padding: 10px 20px; adds 10px top/bottom and 20px left/right inside the element.
+
+
+What does the following code using arrow syntax function declaration do?
+Arrow functions are a compact function syntax. (a, b) => a + b means a function with parameters a and b that
+returns a+b.
+Examples:
+const add = (a, b) => a + b;
+const greet = name => `Hi ${name}`;
+const square = x => { return x * x; } // block form
+Note: arrow functions do not bind their own 'this' and are not suitable as constructors.
+
+
+What does the following code using map with an array output?
+map() transforms every element of an array and returns a new array without mutating the original.
+Examples:
+const nums = [1,2,3];
+const doubled = nums.map(n => n * 2); // [2,4,6]
+const names = ['Amy','Bob'];
+const greetings = names.map(n => `Hi ${n}`); // ['Hi Amy','Hi Bob']
+
+
+What does the following code output using getElementByID and addEventListener?
+Typical pattern:
+const btn = document.getElementById('btn');
+btn.addEventListener('click', () => console.log('Clicked!'));
+Behavior: When user clicks the element with id 'btn', the callback runs and prints 'Clicked!'.
+
+
+What does the following line of Javascript do using a # selector?
+document.querySelector('#title') selects the first element that matches the CSS selector #title (elemequerySelector accepts any CSS selector (classes, attributes, pseudos).
+
+
+Which of the following are true? (mark all that are true about the DOM)
+The DOM represents the HTML document as a tree of objects. You can use JavaScript to access and modify
+DOM elements. Each HTML element is a node in the DOM.
+By default, the HTML span element has a default CSS display property value of:
+inline
+
+
+How would you use CSS to change all the div elements to have a background color of red?
+div { background-color: red; }
+
+
+How would you display an image with a hyperlink in HTML?
+Wrap the &lt;img&gt; element with an &lt;a&gt; tag. Ensure the image file is in the correct folder (public or
+images/) and the src path points to it.
+Example:
+&lt;a href="https://example.com"&gt;
+ &lt;img src="images/logo.png" alt="Logo"&gt;
+&lt;/a&gt;
+Folder scheme example:
+project/
+ index.html
+ images/
+ logo.png
+ css/
+ styles.css
+If using a framework, the image may need to be in a 'public' or 'static' folder so it is served directly.
+
+
+In the CSS box model, what is the ordering of the box layers starting at the inside and working
+out?
+Order: Content -> Padding -> Border -> Margin
+Diagram:
++----------------+

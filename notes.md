@@ -299,7 +299,7 @@ Explanation: getElementById returns the DOM element. Assigning to variable avoid
 What is the opening HTML tag for a paragraph, ordered list, unordered list, second level
 heading, first level heading, third level heading?
 
-Paragraph: "<p>", Ordered list: "<ol>", Unordered list: "<ul>", h2: "<h2>", h1: "<h1>", h3: "<h3>"
+Paragraph: &lt;p>, Ordered list: &lt;ol&gt;, Unordered list: &lt;ul&gt;, h2: &lt;h2&gt;, h1: &lt;h1&gt;, h3: &lt;h3&gt;
 
 
 

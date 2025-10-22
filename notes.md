@@ -424,3 +424,66 @@ Many possibilities depending on promise behavior. Examples:
 
 
 
+
+
+
+!!!!!!!!!!!! STUDY GUIDE V3 !!!!!!!!!!!!!!!!
+
+
+
+What does a div tag do?
+
+div is a container element used to group other HTML elements together. It has no visual effect by itself, but helps structure the page for styling and layout using CSS. Commonly used for sections, wrappers, and layout blocks.
+&lt;div&gt;
+ &lt;p&gt;This is inside a div&lt;/p&gt;
+&lt;/div&gt;
+In this example, the paragraph is grouped inside a div, which can be styled or positioned together.
+
+
+
+What does the following padding CSS do?
+
+div {
+ padding: 20px;
+}
+This adds 20 pixels of space inside the div, between its content and its border. Padding increases the internal spacing, unlike margin which affects the space outside the element.
+
+
+
+
+What does the following code using arrow syntax function declaration do?
+
+const greet = (name) => {
+ return 'Hello, ' + name;
+}
+console.log(greet('Amur'));
+
+This defines an arrow function named greet that takes one argument name and returns a greeting string.
+
+const square = x => x * x;
+console.log(square(5));
+
+Here, square takes a number and returns its square. The arrow syntax allows concise one-line functions.
+
+const add = (a, b) => a + b;
+console.log(add(2, 3));
+
+This function takes two arguments and returns their sum. Arrow functions are common in modern JS, especially with array methods.
+
+
+
+
+What does the following code using map with an array output?
+
+const numbers = [1, 2, 3];
+const doubled = numbers.map(n => n * 2);
+console.log(doubled);
+
+Output: [2, 4, 6] — The map() function applies a transformation to each element, returning a new array.
+
+const students = [{name: 'Amy'}, {name: 'Ben'}];
+const names = students.map(s => s.name);
+console.log(names);
+
+Output: ['Amy', 'Ben'] — This extracts the 'name' property from each object. Map doesn't change the original array.
+

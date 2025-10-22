@@ -487,3 +487,6 @@ console.log(names);
 
 Output: ['Amy', 'Ben'] — This extracts the 'name' property from each object. Map doesn't change the original array.
 
+
+
+

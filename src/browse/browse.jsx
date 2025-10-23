@@ -1,7 +1,34 @@
 import React from 'react';
-import './browse.css'
+import './browse.css';
+import {initialLib} from './initialLib.js';
 
 export function Browse() {
+  const [books, setBooks] = React.useState([]);
+  React.useEffect(() => {
+    let booksText = localStorage.getItem('books');
+    if (!booksText) {
+      booksText = initialLib;
+    }
+    if (booksText) {
+      setBooks(JSON.parse(booksText));
+    }
+  }, []);
+
+  const bookRows = [];
+  if (books.length) {
+    for (const [i, book] of books.entries()) {
+      bookRows.push(
+        <tr key={i}>
+          <td><img width="100" src={book.bookCoverImg}/></td>
+          <td>{book.title}</td>
+          <td>{book.author}</td>
+          <td>{book.pageCount}</td>
+          <td>{book.rating}</td>
+        </tr>
+      );
+    }
+  }
+
   return (
     <main className="container-fluid bg-light text-center vh-100">
       <h1>Browse Books</h1>
@@ -15,36 +42,7 @@ export function Browse() {
             <th>Average Rating</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td><img width="100" src="GatsbyCover.jpg"/></td>
-            <td>The Great Gatsby</td>
-            <td>F. Scott Fitzgerald</td>
-            <td>208</td>
-            <td>4</td>
-          </tr>
-          <tr>
-              <td><img width="100" src="HarryCover.jpg"/></td>
-              <td>Harry Potter</td>
-              <td>J.K. Rowling</td>
-              <td>300</td>
-              <td>4</td>
-            </tr>
-            <tr>
-              <td><img width="100" src="HobbitCover.png"/></td>
-              <td>The Hobbit</td>
-              <td>J.R.R. Tolkein</td>
-              <td>380</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td><img width="100" src="PirateCover.jpg"/></td>
-              <td>Pirate Pete</td>
-              <td>Kim Kennedy</td>
-              <td>30</td>
-              <td>5</td>
-            </tr>
-        </tbody>
+        <tbody id='books'>{bookRows}</tbody>
       </table>
       <p className="loadingmessage bg-light">Loading recently added books...</p>
     </main>

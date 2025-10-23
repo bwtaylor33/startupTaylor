@@ -30,11 +30,13 @@ export default function App() {
                             )}
                         </div>
                         <menu className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to='home'>
-                                Home
-                                </NavLink>
-                            </li>
+                            {authState === AuthState.Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='home'>
+                                    Home
+                                    </NavLink>
+                                </li>
+                            )}
                             {authState === AuthState.Unauthenticated && (
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to='login'>

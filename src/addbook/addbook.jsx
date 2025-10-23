@@ -2,6 +2,13 @@ import React from 'react';
 import './addbook.css'
 
 export function AddBook() {
+  async function addBook() {
+    console.log("addBook");
+  };
+  const handleClick = () => {
+    addBook();
+  };
+
   return (
     <main className="container-fluid bg-light vh-100">
       <h1>Add a Book</h1>
@@ -26,13 +33,13 @@ export function AddBook() {
             <p>5 = I LOVED this book!</p>
         </div>
         <div className="rating">
-            <label for="review" className="form-label">Review out of 5: </label>
+            <label htmlFor="review" className="form-label">Review out of 5: </label>
             <input type="range" className="form-range" id="review" min="0" max="5"/>
         </div>
         <div className="ratingbutton">
             <button className="btn btn-primary" type="button">Submit</button>
             <div className="divider"></div>
-            <button className="btn btn-secondary" type="button">Cancel</button>
+            <button className="btn btn-secondary" type="button" onClick={handleClick}>Cancel</button>
         </div>
       </form>
     </main>

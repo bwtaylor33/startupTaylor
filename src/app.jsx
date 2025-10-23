@@ -8,8 +8,13 @@ import { Home } from './home/home';
 import { Browse } from './browse/browse';
 import { Register } from './register/register';
 import { AddBook } from './addbook/addbook';
+import { AuthState } from './login/authState';
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
     return (
         <BrowserRouter>
             <div className="body bg-dark text-dark">
@@ -24,11 +29,13 @@ export default function App() {
                                 Home
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to='login'>
-                                Login
-                                </NavLink>
-                            </li>
+                            {authState === Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='login'>
+                                    Login
+                                    </NavLink>
+                                </li>
+                            )}
                             <li className="nav-item">
                                 <NavLink className="nav-link" to='register'>
                                 Register
@@ -49,9 +56,37 @@ export default function App() {
                 </header>
         
                 <Routes>
-                    <Route path='/' element={<Login />} exact />
-                    <Route path='/home' element={<Home />} exact />
-                    <Route path='/login' element={<Login />} exact />
+                    {/* <Route path='/' element={<Login />} exact /> */}
+                    <Route
+                        path='/'
+                        element={
+                        <Login
+                            userName={userName}
+                            authState={authState}
+                            onAuthChange={(userName, authState) => {
+                            setAuthState(authState);
+                            setUserName(userName);
+                            }}
+                        />
+                        }
+                        exact
+                    />
+                    <Route path='/home' element={<Home userName={userName} />} exact />
+                    {/* <Route path='/login' element={<Login />} exact /> */}
+                    <Route
+                        path='/login'
+                        element={
+                        <Login
+                            userName={userName}
+                            authState={authState}
+                            onAuthChange={(userName, authState) => {
+                            setAuthState(authState);
+                            setUserName(userName);
+                            }}
+                        />
+                        }
+                        exact
+                    />
                     <Route path='/register' element={<Register />} />
                     <Route path='/browse' element={<Browse />} />
                     <Route path='/addbook' element={<AddBook />} />

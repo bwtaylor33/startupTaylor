@@ -1,10 +1,12 @@
 import React from 'react';
 import './home.css'
 
-export function Home() {
+export function Home(props) {
   return (
     <main className="container-fluid bg-light text-center vh-100 pb-5">
-        <h1 className="home" >Welcome, Bryce!</h1>
+        <h1 className="home">
+            <div className='userName'>Welcome, {props.userName}!</div>
+        </h1>
         <h2 className="home" >Books You've Read: </h2>
         <table className="table table-hover">
             <thead className="bg-secondary">

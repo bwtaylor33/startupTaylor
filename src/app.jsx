@@ -8,6 +8,7 @@ import { Home } from './home/home';
 import { Browse } from './browse/browse';
 import { Register } from './register/register';
 import { AddBook } from './addbook/addbook';
+import { Logout } from './logout/logout';
 import { AuthState } from './login/authState';
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
                                 Home
                                 </NavLink>
                             </li>
-                            {authState === Authenticated && (
+                            {authState === AuthState.Unauthenticated && (
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to='login'>
                                     Login
@@ -51,6 +52,13 @@ export default function App() {
                                 Add Book
                                 </NavLink>
                             </li>
+                            {authState === AuthState.Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='logout'>
+                                    Logout
+                                    </NavLink>
+                                </li>
+                            )}
                         </menu>
                     </nav>
                 </header>
@@ -90,6 +98,17 @@ export default function App() {
                     <Route path='/register' element={<Register />} />
                     <Route path='/browse' element={<Browse />} />
                     <Route path='/addbook' element={<AddBook />} />
+                    <Route
+                        path="/logout"
+                        element={
+                            <Logout
+                                onLogout={() => {
+                                    setAuthState(AuthState.Unauthenticated);
+                                    setUserName("");
+                                }}
+                            />
+                        }
+                        />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 

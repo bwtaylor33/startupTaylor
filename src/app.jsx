@@ -22,7 +22,12 @@ export default function App() {
                 <header className="container-fluid">
                     <nav className="navbar navbar-dark">
                         <div className="navbar-brand">
-                            <NavLink to="home"> <img src="logoName.png" height= "70px"/> </NavLink>
+                            {authState === AuthState.Authenticated && (
+                                <NavLink to="home"> <img src="logoName.png" height= "70px"/> </NavLink>
+                            )}
+                            {authState === AuthState.Unauthenticated && (
+                                <NavLink to="login"> <img src="logoName.png" height= "70px"/> </NavLink>
+                            )}
                         </div>
                         <menu className="navbar-nav">
                             <li className="nav-item">
@@ -37,21 +42,25 @@ export default function App() {
                                     </NavLink>
                                 </li>
                             )}
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to='register'>
-                                Register
-                                </NavLink>
-                            </li>
+                            {authState === AuthState.Unauthenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='register'>
+                                    Register
+                                    </NavLink>
+                                </li>
+                            )}
                             <li className="nav-item">
                                 <NavLink className="nav-link" to='browse'>
                                 Browse
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to='addbook'>
-                                Add Book
-                                </NavLink>
-                            </li>
+                            {authState === AuthState.Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to='addbook'>
+                                    Add Book
+                                    </NavLink>
+                                </li>
+                            )}
                             {authState === AuthState.Authenticated && (
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to='logout'>

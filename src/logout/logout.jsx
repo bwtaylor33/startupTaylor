@@ -12,4 +12,4 @@ export function Logout(props) {
     }, [navigate]);
   
     return null;
-  }
+}

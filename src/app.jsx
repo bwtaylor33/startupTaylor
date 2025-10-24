@@ -106,7 +106,20 @@ export default function App() {
                         }
                         exact
                     />
-                    <Route path='/register' element={<Register />} />
+                    <Route 
+                        path='/register'
+                        element={
+                        <Register
+                            userName={userName}
+                            authState={authState}
+                            onAuthChange={(userName, authState) => {
+                            setAuthState(authState);
+                            setUserName(userName); 
+                            }}
+                        />
+                        }
+                        exact
+                    />
                     <Route path='/browse' element={<Browse />} />
                     <Route path='/addbook' element={<AddBook />} />
                     <Route

@@ -16,11 +16,6 @@ export function Unauthenticated(props) {
     navigate('/home');
   }
 
-  async function createUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
-  }
-
   return (
     <>
       <div>

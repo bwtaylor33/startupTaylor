@@ -8,6 +8,7 @@ export function Browse() {
     let booksText = localStorage.getItem('books');
     if (!booksText) {
       booksText = initialLib;
+      localStorage.setItem('books', initialLib)
     }
     if (booksText) {
       setBooks(JSON.parse(booksText));

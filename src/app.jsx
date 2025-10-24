@@ -110,8 +110,6 @@ export default function App() {
                         path='/register'
                         element={
                         <Register
-                            userName={userName}
-                            authState={authState}
                             onAuthChange={(userName, authState) => {
                             setAuthState(authState);
                             setUserName(userName); 

@@ -1,9 +1,9 @@
 import React from 'react';
-import './browse.css';
 import {initialLib} from './initialLib.js';
 
 export function Browse() {
   const [books, setBooks] = React.useState([]);
+
   React.useEffect(() => {
     let booksText = localStorage.getItem('books');
     if (!booksText) {
@@ -13,6 +13,29 @@ export function Browse() {
     if (booksText) {
       setBooks(JSON.parse(booksText));
     }
+  }, []);
+
+  //simulated webSocket book posting
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      const newBook = {
+        title: 'The Book of Mormon',
+        author: 'Mormon',
+        pageCount: 516,
+        rating: 5,
+        bookCoverImg: 'mormonBook.jpg'
+      };
+      console.log('websocket simulated event: new book received');
+      let booksText = localStorage.getItem('books');
+      let oldBooks = [];
+      if (booksText) {
+        oldBooks = JSON.parse(booksText);
+      }
+      const updatedBooks = [...oldBooks, newBook];
+      localStorage.setItem('books', JSON.stringify(updatedBooks));
+      setBooks(updatedBooks);
+    }, 10000);
+    return () => clearTimeout(timer);
   }, []);
 
   const bookRows = [];
@@ -45,7 +68,6 @@ export function Browse() {
         </thead>
         <tbody id='books'>{bookRows}</tbody>
       </table>
-      <p className="loadingmessage bg-light">Loading recently added books...</p>
     </main>
   );
 }

@@ -4,7 +4,7 @@ import './register.css';
 import {AuthState} from '../login/authState.js';
 import { propTypes } from 'react-bootstrap/esm/Image';
 
-export function Register({ userName, authState, onAuthChange }) {
+export function Register({ onAuthChange }) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
@@ -13,13 +13,8 @@ export function Register({ userName, authState, onAuthChange }) {
   const [passwordMatch, setPasswordMatch] = React.useState('');
 
   const handleRegister = () => {
-    console.log('in handleRegister')
     localStorage.setItem('userName', email);
-    //setUserName(email);
-    onAuthChange(userName, AuthState.Authenticated);
-    console.log(authState);
-    console.log('email: ', email);
-    console.log('user', userName);
+    onAuthChange(email, AuthState.Authenticated);
 
     setFirstName('');
     setLastName('');

@@ -87,15 +87,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] **Bundled using Vite** - done
-- [X] **Components** - Addbook, Login, Register, Home, and Browse components were all created from previous html files
-- [X] **Router** - Top navigation was updated to use the react router. Buttons have not yet been converted
+- [X] **Components** - Addbook, Login, Register, Home, and Browse components were all created from previous html files.
+- [X] **Router** - Top navigation was updated to use the react router. Buttons have not yet been converted.
 
 ## 🚀 React part 2: Reactivity deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [X] **All functionality implemented or mocked out** - All buttons and routes are functioning. Have simulations of service calls by use of localStorage.
+- [X] **Hooks** - Added timer to simulate new data from a Web Hook. Used useState and useEffect.
 
 ## 🚀 Service deliverable
 

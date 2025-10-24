@@ -25,7 +25,6 @@ export function Browse() {
         rating: 5,
         bookCoverImg: 'mormonBook.jpg'
       };
-      console.log('websocket simulated event: new book received');
       let booksText = localStorage.getItem('books');
       let oldBooks = [];
       if (booksText) {

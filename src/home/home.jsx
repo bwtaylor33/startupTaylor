@@ -1,6 +1,5 @@
 import React from 'react';
 import './home.css'
-import {initialLib} from '../browse/initialLib.js';
 import {readBooks} from './readBooks.js';
 import {recBooks} from './recBooks';
 

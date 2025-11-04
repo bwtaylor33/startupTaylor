@@ -1,18 +1,14 @@
 import React from 'react';
-import {initialLib} from './initialLib.js';
 
 export function Browse() {
   const [books, setBooks] = React.useState([]);
 
   React.useEffect(() => {
-    let booksText = localStorage.getItem('books');
-    if (!booksText) {
-      booksText = initialLib;
-      localStorage.setItem('books', initialLib)
-    }
-    if (booksText) {
-      setBooks(JSON.parse(booksText));
-    }
+    fetch('/api/books')
+      .then((response) => response.json())
+      .then((books) => {
+        setBooks(books);
+      });
   }, []);
 
   //simulated webSocket book posting

@@ -1,3 +1,6 @@
+//import {initialLib} from './initialLib.js';
+
+const {initialLib} = require('./initialLib.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -8,7 +11,7 @@ const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let books = [];
+let books = JSON.parse(initialLib);
 let bookshelves = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.

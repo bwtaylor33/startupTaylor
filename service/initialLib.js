@@ -1,4 +1,4 @@
-export const initialLib = `[
+const initialLib = `[
     {
         "title": "The Great Gatsby",
         "author": "F. Scott Fitzgerald",
@@ -28,3 +28,4 @@ export const initialLib = `[
         "bookCoverImg": "PirateCover.jpg"
     }
 ]`;
+module.exports = {initialLib};

@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import './register.css';
 import {AuthState} from '../login/authState.js';
-import { MessageDialog } from './messageDialog';
+import { MessageDialog } from '../login/messageDialog';
 
 export function Register({ onAuthChange }) {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export function Register({ onAuthChange }) {
   async function handleRegister() {
     const response = await fetch(`/api/auth/create`, {
       method: 'post',
-      body: JSON.stringify({ email: userName, firstName: firstName, lastName: lastName, password: password }),
+      body: JSON.stringify({ email: email, firstName: firstName, lastName: lastName, password: password }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },

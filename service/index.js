@@ -12,7 +12,7 @@ let books = [];
 let bookshelves = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -29,10 +29,11 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
+  console.log('creating user');
   if (await findUser('email', req.body.email)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
-    const user = await createUser(req.body.email, req.body.password);
+    const user = await createUser(req.body.email, req.body.firstName, req.body.lastName, req.body.password);
 
     setAuthCookie(res, user.token);
     res.send({ email: user.email });
@@ -41,6 +42,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
+  console.log('logging in');
   const user = await findUser('email', req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -55,6 +57,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
+  console.log('logging out');
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
@@ -123,7 +126,7 @@ app.use((_req, res) => {
 //   return scores;
 // }
 
-async function createUser(email, password) {
+async function createUser(email, firstName, lastName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {

@@ -11,12 +11,6 @@ export function Unauthenticated(props) {
   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
-    navigate('/home');
-  }
-
-  async function loginUser(endpoint) {
     const response = await fetch(`/api/auth/login`, {
       method: 'post',
       body: JSON.stringify({ email: userName, password: password }),
@@ -27,6 +21,7 @@ export function Unauthenticated(props) {
     if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       props.onLogin(userName);
+      navigate('/home');
     } else {
       const body = await response.json();
       setDisplayError(`⚠ Error: ${body.msg}`);

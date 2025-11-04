@@ -16,6 +16,23 @@ export function Unauthenticated(props) {
     navigate('/home');
   }
 
+  async function loginUser(endpoint) {
+    const response = await fetch(`/api/auth/login`, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
+      props.onLogin(userName);
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
+  }
+
   return (
     <>
       <div>

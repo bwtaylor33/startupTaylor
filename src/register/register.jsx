@@ -2,7 +2,7 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import './register.css';
 import {AuthState} from '../login/authState.js';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import { MessageDialog } from './messageDialog';
 
 export function Register({ onAuthChange }) {
   const navigate = useNavigate();
@@ -11,17 +11,30 @@ export function Register({ onAuthChange }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordMatch, setPasswordMatch] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
 
-  const handleRegister = () => {
-    localStorage.setItem('userName', email);
-    onAuthChange(email, AuthState.Authenticated);
+  async function handleRegister() {
+    const response = await fetch(`/api/auth/create`, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, firstName: firstName, lastName: lastName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('userName', email);
+      onAuthChange(email, AuthState.Authenticated);
 
-    setFirstName('');
-    setLastName('');
-    setEmail('');
-    setPassword('');
-    setPasswordMatch('');
-    navigate('/home');
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
+      setPasswordMatch('');
+      navigate('/home');
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    }
   }
 
   return (
@@ -60,6 +73,7 @@ export function Register({ onAuthChange }) {
                       password === ''}>Register</button>
         </div>
       </form>
+      <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
     </main>
   );
 }

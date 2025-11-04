@@ -6,9 +6,17 @@ export function Logout(props) {
     const navigate = useNavigate();
   
     useEffect(() => {
-        localStorage.removeItem('userName');
-        props.onLogout();
-        navigate("/login", { replace: true });
+        fetch(`/api/auth/logout`, {
+            method: 'delete',
+        })
+        .catch(() => {
+            // Logout failed. Assuming offline
+        })
+        .finally(() => {
+            localStorage.removeItem('userName');
+            props.onLogout();
+            navigate("/login", { replace: true });
+        });
     }, [navigate]);
   
     return null;

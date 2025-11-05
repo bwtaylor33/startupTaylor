@@ -28,12 +28,12 @@ const initialLib = `[
     },    
     {
         "title": "Pirate Pete",
-        "isbn": "9780810943568",
+        "isbn": "9781450781831",
         "author": "Kim Kennedy",
         "pageCount": 30,
         "rating": 5,
         "ratingWeight": 1,
-        "bookCoverImg": "PirateCover.jpg"
+        "bookCoverImg": "http://books.google.com/books/content?id=vNQQb8_2SrkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     }
 ]`;
 module.exports = {initialLib};

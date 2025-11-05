@@ -12,32 +12,7 @@ export function AddBook() {
   const [searchTitle, setSearchTitle] = React.useState('');
   const [searchAuthor, setSearchAuthor] = React.useState('');
   const [yourRating, setYourRating] = React.useState(0);
-  
-  //const [books, setBooks] = React.useState([]);
   const [coverArtOptions, setCoverArtOptions] = React.useState([]);
-  // const [coverArtRows, setCoverArtRows] = React.useState([]);
-
-
-  // React.useEffect(() => {
-  //   let booksText = localStorage.getItem('books');
-  //   if (booksText) {
-  //     setBooks(JSON.parse(booksText));
-  //   }
-  // }, []);
-
-  // async function saveScore(score) {
-  //   const date = new Date().toLocaleDateString();
-  //   const newScore = { name: userName, score: score, date: date };
-
-  //   await fetch('/api/score', {
-  //     method: 'POST',
-  //     headers: { 'content-type': 'application/json' },
-  //     body: JSON.stringify(newScore),
-  //   });
-
-  //   // Let other players know the game has concluded
-  //   GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
-  // }
 
   async function addBook() {
     const newBook = {
@@ -47,8 +22,7 @@ export function AddBook() {
       pageCount: pageCount,
       rating: yourRating,
       bookCoverImg: bookCoverImg};
-    // const updatedBooks = [...books, newBook];
-    // setBooks(updatedBooks);
+
     await fetch('/api/books', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -62,25 +36,16 @@ export function AddBook() {
     setAuthor('');
     setPageCount(0);
     setYourRating(0);
-    navigate('/browse');
+    navigate('/home');
   };
 
   const handleCancel = () => {
-      navigate('/home');
+    setTitle('');
+    setAuthor('');
+    setPageCount(0);
+    setYourRating(0);
+    navigate('/home');
   }
-
-  // async function handleCover() {
-  //   const q = `intitle:${encodeURIComponent(title)}+inauthor:${encodeURIComponent(author)}`;
-  //   const url = `https://www.googleapis.com/books/v1/volumes?q=${q}&maxResults=5`;
-  //   fetch('url', {
-  //     method: 'GET',
-  //     headers: { 'content-type': 'application/json' }
-  //   })
-  //   .then((response) => response.json())
-  //   .then((coverArtOptions) => {
-  //     setCoverArtOptions(coverArtOptions);
-  //   });
-  // }
 
   async function handleCover() {
     try {
@@ -102,11 +67,20 @@ export function AddBook() {
     
       const coverArtOptions = (data.items || []).map(item => {
         const info = item.volumeInfo;
+        let isbn = info.industryIdentifiers?.find(i => i.type === 'ISBN_13')?.identifier;
+        console.log("Item id = ", item.id);
+        if (isbn === undefined) {
+          isbn = info.industryIdentifiers?.find(i => i.type === 'ISBN_10')?.identifier;
+        }
+        if (isbn === undefined) {
+          isbn = "Google ID: " + item.id;
+        }
+        console.log("isbin = ", isbn);
         return {
           title: info.title,
           author: info.authors[0],
           thumbnail: info.imageLinks?.thumbnail,
-          isbn: info.industryIdentifiers?.find(i => i.type === 'ISBN_13')?.identifier,
+          isbn: isbn,
           pageCount: info.pageCount
         };
       });
@@ -122,13 +96,13 @@ export function AddBook() {
   if (coverArtOptions.length) {
     for (const [i, coverArt] of coverArtOptions.entries()) {
       coverArtCols.push(
-          <td data-id={i}><img width='50' src={coverArt.thumbnail} onClick={()=>{
+          <li className="coverArtCols" key={i}><img width='50' src={coverArt.thumbnail} onClick={()=>{
             setTitle(coverArt.title);
             setAuthor(coverArt.author);
             setISBN(coverArt.isbn);
             setPageCount(coverArt.pageCount);
             setBookCoverImg(coverArt.thumbnail);
-          }} /></td>
+          }} /></li>
       );
     }
   }
@@ -147,13 +121,13 @@ export function AddBook() {
           <input className="form-control" type="text" placeholder="author name here" value={searchAuthor} onChange={(e) => setSearchAuthor(e.target.value)}/>
         </div>
         <div className='ratingbutton'>
-          <button className="btn btn-primary" type="button" onClick={handleCover}>Search</button>
+          <button className="btn btn-primary" type="button" onClick={handleCover} disabled={searchTitle === "" || searchAuthor === ''}>Search</button>
         </div>
-        <table className="table">
-          <tbody id='coverart'><tr>{coverArtCols}</tr></tbody>
-        </table>
+        <ul className="list-group list-group-horizontal">
+          {coverArtCols}
+        </ul>
         <div>
-          <table>
+          <table className="table table-bordered">
             <tr><td>Title:</td><td>{title}</td></tr>
             <tr><td>ISBN:</td><td>{isbn}</td></tr>
             <tr><td>Author:</td><td>{author}</td></tr>
@@ -162,18 +136,18 @@ export function AddBook() {
         </div>
         <div id="stage2">
           <div className="ratingdesc">
-              <p>1 = I do NOT like this book.</p>
-              <p>2 = I would not recommend this book.</p>
-              <p>3 = This book was about average.</p>
-              <p>4 = I liked this book!</p>
-              <p>5 = I LOVED this book!</p>
+              <li>1 = I do NOT like this book.</li>
+              <li>2 = I would not recommend this book.</li>
+              <li>3 = This book was about average.</li>
+              <li>4 = I liked this book!</li>
+              <li>5 = I LOVED this book!</li>
           </div>
           <div className="rating">
-              <label htmlFor="review" className="form-label">Review out of 5: </label>
-              <input type="range" className="form-range" id="review" min="0" max="5" value={yourRating} onChange={(e) => setYourRating(Number(e.target.value))}/>
+              <label htmlFor="review" className="form-label">Your Rating (1-5): </label>
+              <input type="range" className="form-range" id="review" min="1" max="5" value={yourRating} onChange={(e) => setYourRating(Number(e.target.value))}/>
           </div>
           <div className="ratingbutton">
-              <button className="btn btn-primary" type="button" onClick={handleSubmit}>Submit</button>
+              <button className="btn btn-primary" type="button" onClick={handleSubmit} disabled={title === ''}>Submit</button>
               <div className="divider"></div>
               <button className="btn btn-secondary" type="button" onClick={handleCancel}>Cancel</button>
           </div>

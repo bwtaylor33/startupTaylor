@@ -93,10 +93,42 @@ apiRouter.get('/bookshelf', verifyAuth, async (req, res) => {
   res.send(bookshelf);
 });
 
+function userHasReadBook(user, book) {
+  for (const [i, shelfItem] of bookshelves.entries()) {
+    console.log(user.email, " =? ", shelfItem.user.email);
+    if (user.email === shelfItem.user.email && book.isbn === shelfItem.isbn) {
+      console.log(user.email, " has read ", book.title);
+      return true;
+    }
+  }
+  console.log(user.email, " has not read ", book.title);
+  return false;
+}
+
+// GetRecommendations
+apiRouter.get('/recommendations', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  console.log("getting recommendation for ", user.email);
+  let recommendation = null;
+  for (const [i, book] of books.entries()) {
+    if (recommendation === null) {
+      recommendation = book;
+    }
+    else {
+      if (!userHasReadBook(user, book) && book.rating > recommendation.rating) {
+        recommendation = book;
+      }
+    }
+  }
+  const recommendations = [recommendation];
+  console.log("recommending for user: ", recommendations);
+  res.send(recommendations);
+});
+
 // AddBook
 apiRouter.post('/books', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  books = updateBooks(user, req.body);
+  books = await updateBooks(user, req.body);
   res.send(books);
 });
 
@@ -114,10 +146,6 @@ app.use((_req, res) => {
 function updateBooks(user, newBook) {
   let found = false;
   console.log("updating books with ", newBook);
-  if (!Array.isArray(books)) {
-    console.log("no longer iterable");
-    console.log(books);
-  }
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
@@ -131,6 +159,16 @@ function updateBooks(user, newBook) {
   if (!found) {
     newBook.ratingWeight = 1;
     books.push(newBook);
+  }
+  console.log("updating bookshelf with ", newBook);
+  found = false;
+  for (const [i, prevBook] of bookshelves.entries()) {
+    if (newBook.isbn === prevBook.isbn) {
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
     //add to the user's bookshelf
     const newBookshelfItem = {
       title: newBook.title,

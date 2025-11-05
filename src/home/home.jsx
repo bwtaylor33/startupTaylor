@@ -1,7 +1,5 @@
 import React from 'react';
 import './home.css'
-import {recBooks} from './recBooks';
-
 
 export function Home(props) {
 
@@ -15,16 +13,14 @@ export function Home(props) {
         });
     }, []);
 
-    const [recList, setRecs] = React.useState([]);
+    const [recList, setRecList] = React.useState([]);
     React.useEffect(() => {
-        let recText = localStorage.getItem('recBooks');
-        if (!recText) {
-            recText = recBooks;
-        }
-        if (recText) {
-            setRecs(JSON.parse(recText));
-        }
-    },[]);
+        fetch('/api/recommendations')
+          .then((response) => response.json())
+          .then((recList) => {
+            setRecList(recList);
+          });
+      }, []);
     
 
     const readRows = [];

@@ -5,13 +5,25 @@
 
 .ratingdesc {
     font-size: 0.8em;
+    list-style-type: none;
+    padding-bottom: 16px;
 }
 
 .ratingbutton {
     text-align: center;
     margin-right: 10px;
+    padding-bottom: 16px;
 }
 
 .stage2 {
     display: none;
+}
+
+.bookAttributes {
+    width: 100%;
+}
+
+.coverArtCols {
+    list-style-type: none;
+    padding: 16px;
 }

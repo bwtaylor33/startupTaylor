@@ -85,9 +85,11 @@ apiRouter.get('/books', (_req, res) => {
 });
 
 // GetBookshelf
-apiRouter.get('/bookshelf', verifyAuth, (req, res) => {
-  const user = findUser('token', req.cookies[authCookieName]);
-  const bookshelf = bookshelves.filter(b => b.user === user);
+apiRouter.get('/bookshelf', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  console.log("getting shelf for ", user.email);
+  const bookshelf = bookshelves.filter(b => b.user.email === user.email);
+  console.log("getting bookshelf for user: ", bookshelf);
   res.send(bookshelf);
 });
 
@@ -109,9 +111,13 @@ app.use((_req, res) => {
 });
 
 // updateBooks adds a new book to the library
-async function updateBooks(user, newBook) {
+function updateBooks(user, newBook) {
   let found = false;
   console.log("updating books with ", newBook);
+  if (!Array.isArray(books)) {
+    console.log("no longer iterable");
+    console.log(books);
+  }
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
@@ -126,8 +132,16 @@ async function updateBooks(user, newBook) {
     newBook.ratingWeight = 1;
     books.push(newBook);
     //add to the user's bookshelf
-    newBook.user = user;
-    bookshelves.push(newBook);
+    const newBookshelfItem = {
+      title: newBook.title,
+      isbn: newBook.isbn,
+      author: newBook.author,
+      pageCount: newBook.pageCount,
+      rating: newBook.rating,
+      bookCoverImg: newBook.bookCoverImg,
+      user: user 
+    };
+    bookshelves.push(newBookshelfItem);
     console.log("new book added to library. new book: ", newBook);
     console.log("bookshelves: ", bookshelves);
   }

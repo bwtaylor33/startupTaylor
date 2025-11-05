@@ -13,17 +13,17 @@ export function AddBook() {
   const [searchAuthor, setSearchAuthor] = React.useState('');
   const [yourRating, setYourRating] = React.useState(0);
   
-  const [books, setBooks] = React.useState([]);
+  //const [books, setBooks] = React.useState([]);
   const [coverArtOptions, setCoverArtOptions] = React.useState([]);
   // const [coverArtRows, setCoverArtRows] = React.useState([]);
 
 
-  React.useEffect(() => {
-    let booksText = localStorage.getItem('books');
-    if (booksText) {
-      setBooks(JSON.parse(booksText));
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   let booksText = localStorage.getItem('books');
+  //   if (booksText) {
+  //     setBooks(JSON.parse(booksText));
+  //   }
+  // }, []);
 
   // async function saveScore(score) {
   //   const date = new Date().toLocaleDateString();
@@ -42,12 +42,13 @@ export function AddBook() {
   async function addBook() {
     const newBook = {
       title: title,
+      isbn: isbn,
       author: author,
       pageCount: pageCount,
       rating: yourRating,
       bookCoverImg: bookCoverImg};
-    const updatedBooks = [...books, newBook];
-    setBooks(updatedBooks);
+    // const updatedBooks = [...books, newBook];
+    // setBooks(updatedBooks);
     await fetch('/api/books', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

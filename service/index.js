@@ -91,11 +91,12 @@ apiRouter.get('/bookshelf', verifyAuth, (req, res) => {
   res.send(bookshelf);
 });
 
-// // SubmitScore
-// apiRouter.post('/score', verifyAuth, (req, res) => {
-//   scores = updateScores(req.body);
-//   res.send(scores);
-// });
+// AddBook
+apiRouter.post('/books', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  books = updateBooks(user, req.body);
+  res.send(books);
+});
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -107,27 +108,32 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// // updateScores considers a new score for inclusion in the high scores.
-// function updateScores(newScore) {
-//   let found = false;
-//   for (const [i, prevScore] of scores.entries()) {
-//     if (newScore.score > prevScore.score) {
-//       scores.splice(i, 0, newScore);
-//       found = true;
-//       break;
-//     }
-//   }
+// updateBooks adds a new book to the library
+async function updateBooks(user, newBook) {
+  let found = false;
+  console.log("updating books with ", newBook);
+  for (const [i, prevBook] of books.entries()) {
+    if (newBook.isbn === prevBook.isbn) {
+      found = true;
+      console.log("updating avg rating for book in lib.");
+      prevBook.rating = (newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1);
+      prevBook.ratingWeight++;
+      break;
+    }
+  }
 
-//   if (!found) {
-//     scores.push(newScore);
-//   }
+  if (!found) {
+    newBook.ratingWeight = 1;
+    books.push(newBook);
+    //add to the user's bookshelf
+    newBook.user = user;
+    bookshelves.push(newBook);
+    console.log("new book added to library. new book: ", newBook);
+    console.log("bookshelves: ", bookshelves);
+  }
 
-//   if (scores.length > 10) {
-//     scores.length = 10;
-//   }
-
-//   return scores;
-// }
+  return books;
+}
 
 async function createUser(email, firstName, lastName, password) {
   const passwordHash = await bcrypt.hash(password, 10);

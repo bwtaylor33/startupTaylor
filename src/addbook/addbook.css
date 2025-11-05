@@ -11,3 +11,7 @@
     text-align: center;
     margin-right: 10px;
 }
+
+.stage2 {
+    display: none;
+}

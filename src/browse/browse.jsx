@@ -12,26 +12,26 @@ export function Browse() {
   }, []);
 
   //simulated webSocket book posting
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      const newBook = {
-        title: 'The Book of Mormon',
-        author: 'Mormon',
-        pageCount: 516,
-        rating: 5,
-        bookCoverImg: 'mormonBook.jpg'
-      };
-      let booksText = localStorage.getItem('books');
-      let oldBooks = [];
-      if (booksText) {
-        oldBooks = JSON.parse(booksText);
-      }
-      const updatedBooks = [...oldBooks, newBook];
-      localStorage.setItem('books', JSON.stringify(updatedBooks));
-      setBooks(updatedBooks);
-    }, 10000);
-    return () => clearTimeout(timer);
-  }, []);
+  // React.useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     const newBook = {
+  //       title: 'The Book of Mormon',
+  //       author: 'Mormon',
+  //       pageCount: 516,
+  //       rating: 5,
+  //       bookCoverImg: 'mormonBook.jpg'
+  //     };
+  //     let booksText = localStorage.getItem('books');
+  //     let oldBooks = [];
+  //     if (booksText) {
+  //       oldBooks = JSON.parse(booksText);
+  //     }
+  //     const updatedBooks = [...oldBooks, newBook];
+  //     localStorage.setItem('books', JSON.stringify(updatedBooks));
+  //     setBooks(updatedBooks);
+  //   }, 10000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const bookRows = [];
   if (books.length) {

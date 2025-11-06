@@ -110,7 +110,7 @@ export function AddBook() {
 
   return (
     <main className="container-fluid bg-light vh-100">
-      <h1>Find Your Book</h1>
+      <h2>Find Your Book</h2>
       <form className="form-container">
         <div className="addbook form-group">
           <label>Book Title: </label>
@@ -131,10 +131,11 @@ export function AddBook() {
             <tr><td>Title:</td><td>{title}</td></tr>
             <tr><td>ISBN:</td><td>{isbn}</td></tr>
             <tr><td>Author:</td><td>{author}</td></tr>
-            <tr><td>Page Count:</td><td>{pageCount}</td></tr>
+            <tr><td>Page Count:</td><td>{pageCount === 0 ? "" : pageCount}</td></tr>
           </table>
         </div>
-        <div id="stage2">
+        <div>
+          <h2 className="text-center">Submit Rating</h2>
           <div className="ratingdesc">
               <li>1 = I do NOT like this book.</li>
               <li>2 = I would not recommend this book.</li>

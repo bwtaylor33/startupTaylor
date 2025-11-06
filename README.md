@@ -101,12 +101,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [X] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [X] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [X] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [X] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [X] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [X] **Node.js/Express HTTP service** - node.js and Express service that has an in'memory storage of book database and user bookshelves
+- [X] **Static middleware for frontend** - Elements from previous deliverable still present. Removed localStorage and replaced with API calls
+- [X] **Calls to third party endpoints** - Using Google Books API to search for a book they've read and want to rate.
+- [X] **Backend service endpoints** - All user attributes, book database, and bookshelf data are stored in the back end.
+- [X] **Frontend calls service endpoints** - Books are displayed from the back end to both the personal bookshelf on the home page and in the unauthenticated browse page.
+- [X] **Supports registration, login, logout, and restricted endpoint** - All are working and functioning! Register is only visible when unauthorized, and add book is only visible when logged in.
 
 
 ## 🚀 DB deliverable

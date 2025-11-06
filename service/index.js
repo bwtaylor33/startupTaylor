@@ -150,7 +150,7 @@ function updateBooks(user, newBook) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
       console.log("updating avg rating for book in lib.");
-      prevBook.rating = (newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1);
+      prevBook.rating = ((newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1)).toFixed(1);
       prevBook.ratingWeight++;
       break;
     }

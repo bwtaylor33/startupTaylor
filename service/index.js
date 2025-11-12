@@ -1,18 +1,11 @@
-//import {initialLib} from './initialLib.js';
-
-const {initialLib} = require('./initialLib.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
-
-// The scores and users are saved in memory and disappear whenever the service is restarted.
-let users = [];
-let books = JSON.parse(initialLib);
-let bookshelves = [];
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -45,11 +38,11 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  console.log('logging in');
   const user = await findUser('email', req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ email: user.email });
       return;
@@ -60,10 +53,10 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  console.log('logging out');
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -80,55 +73,57 @@ const verifyAuth = async (req, res, next) => {
 };
 
 // GetBooks
-apiRouter.get('/books', (_req, res) => {
+apiRouter.get('/books', async (_req, res) => {
+  const books = await DB.getBooks();
   res.send(books);
 });
 
 // GetBookshelf
 apiRouter.get('/bookshelf', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  console.log("getting shelf for ", user.email);
-  const bookshelf = bookshelves.filter(b => b.user.email === user.email);
-  console.log("getting bookshelf for user: ", bookshelf);
+  //console.log("getting shelf for ", user.email);
+  const bookshelf = await DB.getBookshelf(user);
+  //console.log("getting bookshelf for user: ", bookshelf);
   res.send(bookshelf);
 });
 
-function userHasReadBook(user, book) {
-  for (const [i, shelfItem] of bookshelves.entries()) {
-    console.log(user.email, " =? ", shelfItem.user.email);
-    if (user.email === shelfItem.user.email && book.isbn === shelfItem.isbn) {
-      console.log(user.email, " has read ", book.title);
-      return true;
-    }
+async function userHasReadBook(user, book) {
+  const hasRead = await DB.userHasRead(user, book);
+  if (hasRead) {
+    console.log(user.email, " has read ", book.title);
+  }else {
+    console.log(user.email, " has not read ", book.title);
   }
-  console.log(user.email, " has not read ", book.title);
-  return false;
+  return hasRead;
 }
 
 // GetRecommendations
 apiRouter.get('/recommendations', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  console.log("getting recommendation for ", user.email);
+  //console.log("getting recommendation for ", user.email);
   let recommendation = null;
+  const books = await DB.getBooks();
   for (const [i, book] of books.entries()) {
-    if (recommendation === null) {
+    const hasRead = await userHasReadBook(user, book);
+    if (!hasRead && (recommendation === null || book.rating > recommendation.rating)) {
       recommendation = book;
     }
-    else {
-      if (!userHasReadBook(user, book) && book.rating > recommendation.rating) {
-        recommendation = book;
-      }
-    }
   }
-  const recommendations = [recommendation];
+  const recommendations = [];
+  if (recommendation !== null) {
+    recommendations.push(recommendation);
+  }
   console.log("recommending for user: ", recommendations);
   res.send(recommendations);
 });
 
 // AddBook
 apiRouter.post('/books', verifyAuth, async (req, res) => {
+  console.log("starting addBook")
   const user = await findUser('token', req.cookies[authCookieName]);
+  console.log("found user: ", user);
   books = await updateBooks(user, req.body);
+  console.log("updated books: ", books);
   res.send(books);
 });
 
@@ -143,8 +138,9 @@ app.use((_req, res) => {
 });
 
 // updateBooks adds a new book to the library
-function updateBooks(user, newBook) {
+async function updateBooks(user, newBook) {
   let found = false;
+  const books = await DB.getBooks();
   console.log("updating books with ", newBook);
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
@@ -152,38 +148,36 @@ function updateBooks(user, newBook) {
       console.log("updating avg rating for book in lib.");
       prevBook.rating = ((newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1)).toFixed(1);
       prevBook.ratingWeight++;
+      DB.updateBook(prevBook);
       break;
     }
   }
 
   if (!found) {
     newBook.ratingWeight = 1;
-    books.push(newBook);
+    await DB.addBook(newBook);
+    console.log("book added to books collection");
   }
   console.log("updating bookshelf with ", newBook);
+  console.log("user: ", user);
+  const bookshelf = await DB.getBookshelf(user);
   found = false;
-  for (const [i, prevBook] of bookshelves.entries()) {
+  for (const [i, prevBook] of bookshelf.entries()) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
       break;
     }
   }
-  if (!found) {
-    //add to the user's bookshelf
-    const newBookshelfItem = {
-      title: newBook.title,
-      isbn: newBook.isbn,
-      author: newBook.author,
-      pageCount: newBook.pageCount,
-      rating: newBook.rating,
-      bookCoverImg: newBook.bookCoverImg,
-      user: user 
-    };
-    bookshelves.push(newBookshelfItem);
-    console.log("new book added to library. new book: ", newBook);
-    console.log("bookshelves: ", bookshelves);
+  if (found) {
+    console.log("book has been found at bookshelf");
+  }else {
+    console.log("book has not been found");
   }
-
+  if (!found) {
+    DB.addBookshelf(user, newBook);
+    console.log("new book added to bookshelf for ", user);
+  }
+  books = await DB.getBooks();
   return books;
 }
 
@@ -197,7 +191,8 @@ async function createUser(email, firstName, lastName, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+
+  await DB.addUser(user);
 
   return user;
 }
@@ -205,7 +200,10 @@ async function createUser(email, firstName, lastName, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // setAuthCookie in the HTTP response

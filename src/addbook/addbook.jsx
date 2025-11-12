@@ -30,8 +30,8 @@ export function AddBook() {
     });    
   };
 
-  const handleSubmit = () => {
-    addBook();
+  const handleSubmit = async () => {
+    await addBook();
     setTitle('');
     setAuthor('');
     setPageCount(0);

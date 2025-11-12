@@ -11,7 +11,7 @@ export function AddBook() {
   const [bookCoverImg, setBookCoverImg] = React.useState('');
   const [searchTitle, setSearchTitle] = React.useState('');
   const [searchAuthor, setSearchAuthor] = React.useState('');
-  const [yourRating, setYourRating] = React.useState(0);
+  const [yourRating, setYourRating] = React.useState(1);
   const [coverArtOptions, setCoverArtOptions] = React.useState([]);
 
   async function addBook() {
@@ -35,7 +35,7 @@ export function AddBook() {
     setTitle('');
     setAuthor('');
     setPageCount(0);
-    setYourRating(0);
+    setYourRating(1);
     navigate('/home');
   };
 
@@ -43,7 +43,7 @@ export function AddBook() {
     setTitle('');
     setAuthor('');
     setPageCount(0);
-    setYourRating(0);
+    setYourRating(1);
     navigate('/home');
   }
 
@@ -127,11 +127,13 @@ export function AddBook() {
           {coverArtCols}
         </ul>
         <div>
-          <table className="table table-bordered">
-            <tr><td>Title:</td><td>{title}</td></tr>
-            <tr><td>ISBN:</td><td>{isbn}</td></tr>
-            <tr><td>Author:</td><td>{author}</td></tr>
-            <tr><td>Page Count:</td><td>{pageCount === 0 ? "" : pageCount}</td></tr>
+          <table className="table table-light">
+            <tbody>
+              <tr><td>Title:</td><td>{title}</td></tr>
+              <tr><td>ISBN:</td><td>{isbn}</td></tr>
+              <tr><td>Author:</td><td>{author}</td></tr>
+              <tr><td>Page Count:</td><td>{pageCount === 0 ? "" : pageCount}</td></tr>
+            </tbody>
           </table>
         </div>
         <div>

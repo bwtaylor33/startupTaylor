@@ -89,11 +89,11 @@ apiRouter.get('/bookshelf', verifyAuth, async (req, res) => {
 
 async function userHasReadBook(user, book) {
   const hasRead = await DB.userHasRead(user, book);
-  if (hasRead) {
-    console.log(user.email, " has read ", book.title);
-  }else {
-    console.log(user.email, " has not read ", book.title);
-  }
+  // if (hasRead) {
+  //   console.log(user.email, " has read ", book.title);
+  // }else {
+  //   console.log(user.email, " has not read ", book.title);
+  // }
   return hasRead;
 }
 
@@ -121,7 +121,7 @@ apiRouter.get('/recommendations', verifyAuth, async (req, res) => {
 apiRouter.post('/books', verifyAuth, async (req, res) => {
   console.log("starting addBook")
   const user = await findUser('token', req.cookies[authCookieName]);
-  console.log("found user: ", user);
+  //console.log("found user: ", user);
   books = await updateBooks(user, req.body);
   console.log("updated books: ", books);
   res.send(books);
@@ -140,7 +140,7 @@ app.use((_req, res) => {
 // updateBooks adds a new book to the library
 async function updateBooks(user, newBook) {
   let found = false;
-  const books = await DB.getBooks();
+  let books = await DB.getBooks();
   console.log("updating books with ", newBook);
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
@@ -168,11 +168,11 @@ async function updateBooks(user, newBook) {
       break;
     }
   }
-  if (found) {
-    console.log("book has been found at bookshelf");
-  }else {
-    console.log("book has not been found");
-  }
+  // if (found) {
+  //   console.log("book has been found at bookshelf");
+  // }else {
+  //   console.log("book has not been found");
+  // }
   if (!found) {
     DB.addBookshelf(user, newBook);
     console.log("new book added to bookshelf for ", user);

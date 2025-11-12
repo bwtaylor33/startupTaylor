@@ -57,9 +57,14 @@ async function addBookshelf(user, newBook) {
   return bookshelfCollection.insertOne(newBookshelfItem);
 }
 
-function getBooks() {
-  const cursor = booksCollection.find();
-  return cursor.toArray();
+async function getBooks() {
+  // const bookshelf = await bookshelfCollection
+  // .find(query)
+  // .toArray();
+  const books = await booksCollection
+    .find()
+    .toArray();
+  return books;
 }
 
 async function getBookshelf(user) {

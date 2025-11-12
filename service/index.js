@@ -81,7 +81,7 @@ apiRouter.get('/books', async (_req, res) => {
 // GetBookshelf
 apiRouter.get('/bookshelf', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
-  //console.log("getting shelf for ", user.email);
+  console.log("getting shelf for ", user.email);
   const bookshelf = await DB.getBookshelf(user);
   //console.log("getting bookshelf for user: ", bookshelf);
   res.send(bookshelf);
@@ -119,11 +119,11 @@ apiRouter.get('/recommendations', verifyAuth, async (req, res) => {
 
 // AddBook
 apiRouter.post('/books', verifyAuth, async (req, res) => {
-  console.log("starting addBook")
+  //console.log("starting addBook")
   const user = await findUser('token', req.cookies[authCookieName]);
   //console.log("found user: ", user);
   books = await updateBooks(user, req.body);
-  console.log("updated books: ", books);
+  //console.log("updated books: ", books);
   res.send(books);
 });
 
@@ -145,7 +145,7 @@ async function updateBooks(user, newBook) {
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
-      console.log("updating avg rating for book in lib.");
+      //console.log("updating avg rating for book in lib.");
       prevBook.rating = ((newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1)).toFixed(1);
       prevBook.ratingWeight++;
       DB.updateBook(prevBook);
@@ -158,8 +158,8 @@ async function updateBooks(user, newBook) {
     await DB.addBook(newBook);
     console.log("book added to books collection");
   }
-  console.log("updating bookshelf with ", newBook);
-  console.log("user: ", user);
+  //console.log("updating bookshelf with ", newBook);
+  //console.log("user: ", user);
   const bookshelf = await DB.getBookshelf(user);
   found = false;
   for (const [i, prevBook] of bookshelf.entries()) {

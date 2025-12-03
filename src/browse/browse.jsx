@@ -11,9 +11,9 @@ export function Browse() {
 
     socket.onmessage = async (msg) => {
       try {
-        console.log("received message, about to parse");
+        //console.log("received message, about to parse");
         const book = JSON.parse(await msg.data);
-        console.log("adding book from socket: ", book);
+        //console.log("adding book from socket: ", book);
         setBooks(prev => [...prev, book])
       } catch (error) {
         console.log("error: ", error);

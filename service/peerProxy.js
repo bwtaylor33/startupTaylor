@@ -2,7 +2,7 @@ const { WebSocketServer, WebSocket } = require('ws');
 
 function peerProxy(httpServer) {
   try {
-  // Create a websocket object
+  // qCreate a websocket object
   const socketServer = new WebSocketServer({ server: httpServer });
 
   socketServer.on('connection', (socket) => {

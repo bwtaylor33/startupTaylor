@@ -120,8 +120,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [X] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [X] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [X] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [X] **Application is fully functional** - I did not complete this part of the deliverable.
+- [X] **Backend listens for WebSocket connection** - done
+- [X] **Frontend makes WebSocket connection** - done
+- [X] **Data sent over WebSocket connection** - JSON for each new book posted to all other listening clients so that refresh isn't necessary to see new books
+- [X] **WebSocket data displayed** - done
+- [X] **Application is fully functional** - done

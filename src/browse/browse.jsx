@@ -11,28 +11,6 @@ export function Browse() {
       });
   }, []);
 
-  //simulated webSocket book posting
-  // React.useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     const newBook = {
-  //       title: 'The Book of Mormon',
-  //       author: 'Mormon',
-  //       pageCount: 516,
-  //       rating: 5,
-  //       bookCoverImg: 'mormonBook.jpg'
-  //     };
-  //     let booksText = localStorage.getItem('books');
-  //     let oldBooks = [];
-  //     if (booksText) {
-  //       oldBooks = JSON.parse(booksText);
-  //     }
-  //     const updatedBooks = [...oldBooks, newBook];
-  //     localStorage.setItem('books', JSON.stringify(updatedBooks));
-  //     setBooks(updatedBooks);
-  //   }, 10000);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
   const bookRows = [];
   if (books.length) {
     for (const [i, book] of books.entries()) {
@@ -47,6 +25,20 @@ export function Browse() {
       );
     }
   }
+
+  let port = window.location.port;
+  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+  let socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+  socket.onmessage = async (msg) => {
+    try {
+      console.log("received message, about to parse");
+      const book = JSON.parse(await msg.data);
+      console.log("adding book from socket: ", book);
+      setBooks(prev => [...prev, book])
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  };
 
   return (
     <main className="container-fluid bg-light text-center vh-100">

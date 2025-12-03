@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName = 'token';
 
@@ -119,12 +120,22 @@ apiRouter.get('/recommendations', verifyAuth, async (req, res) => {
 
 // AddBook
 apiRouter.post('/books', verifyAuth, async (req, res) => {
+  try{
   //console.log("starting addBook")
   const user = await findUser('token', req.cookies[authCookieName]);
   //console.log("found user: ", user);
   books = await updateBooks(user, req.body);
   //console.log("updated books: ", books);
+
+  // broadcast new book to other connected clients on their websockets
+  console.log("about to broadcast ", req.body.title);
+  broadcastMessage(req.body);
+
   res.send(books);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ msg: 'Server error' });
+  }
 });
 
 // Default error handler
@@ -145,7 +156,6 @@ async function updateBooks(user, newBook) {
   for (const [i, prevBook] of books.entries()) {
     if (newBook.isbn === prevBook.isbn) {
       found = true;
-      //console.log("updating avg rating for book in lib.");
       prevBook.rating = ((newBook.rating + prevBook.rating * prevBook.ratingWeight) / (prevBook.ratingWeight + 1)).toFixed(1);
       prevBook.ratingWeight++;
       DB.updateBook(prevBook);
@@ -168,11 +178,7 @@ async function updateBooks(user, newBook) {
       break;
     }
   }
-  // if (found) {
-  //   console.log("book has been found at bookshelf");
-  // }else {
-  //   console.log("book has not been found");
-  // }
+
   if (!found) {
     DB.addBookshelf(user, newBook);
     console.log("new book added to bookshelf for ", user);
@@ -216,6 +222,8 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+const { broadcastMessage } = peerProxy(httpService);

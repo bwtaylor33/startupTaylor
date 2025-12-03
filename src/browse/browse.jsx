@@ -4,6 +4,25 @@ export function Browse() {
   const [books, setBooks] = React.useState([]);
 
   React.useEffect(() => {
+    //create websocket connection
+    const port = window.location.port;
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    const socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
+
+    socket.onmessage = async (msg) => {
+      try {
+        console.log("received message, about to parse");
+        const book = JSON.parse(await msg.data);
+        console.log("adding book from socket: ", book);
+        setBooks(prev => [...prev, book])
+      } catch (error) {
+        console.log("error: ", error);
+      }
+    };
+  }, []);
+
+  React.useEffect(() => {
+    //load books collection
     fetch('/api/books')
       .then((response) => response.json())
       .then((books) => {
@@ -25,20 +44,6 @@ export function Browse() {
       );
     }
   }
-
-  let port = window.location.port;
-  const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-  let socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
-  socket.onmessage = async (msg) => {
-    try {
-      console.log("received message, about to parse");
-      const book = JSON.parse(await msg.data);
-      console.log("adding book from socket: ", book);
-      setBooks(prev => [...prev, book])
-    } catch (error) {
-      console.log("error: ", error);
-    }
-  };
 
   return (
     <main className="container-fluid bg-light text-center vh-100">
